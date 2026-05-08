@@ -73,3 +73,15 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+
+# Unity
+proyectoFinal_RA_AEP/[Ll]ibrary/
+proyectoFinal_RA_AEP/[Tt]emp/
+proyectoFinal_RA_AEP/[Oo]bj/
+proyectoFinal_RA_AEP/[Bb]uild/
+proyectoFinal_RA_AEP/[Bb]uilds/
+
+# Android native libs
+*.so
+*.dbg.so
