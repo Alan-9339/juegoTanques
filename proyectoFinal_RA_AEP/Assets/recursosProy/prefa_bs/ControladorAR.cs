@@ -23,6 +23,10 @@ public class ControladorAR : MonoBehaviour
     [Header("Player")]
     public GameObject tankPlayerPrefab;
 
+    [Header("Joysticks")]
+    public FixedJoystick joystickMovimiento;
+    public FixedJoystick joystickApuntado;
+
     private GameObject mapaInstanciado;
 
     private ARRaycastManager raycastManager;
@@ -82,9 +86,7 @@ public class ControladorAR : MonoBehaviour
             centroPantalla,
             hits,
             TrackableType.PlaneWithinPolygon))
-            
         {
-            Debug.Log("SUPERFICIE DETECTADA");
             posicionValida = true;
 
             posicionDetectada = hits[0].pose;
@@ -94,7 +96,6 @@ public class ControladorAR : MonoBehaviour
             visualPrevia.transform.position =
                 posicionDetectada.position;
 
-            // Rotación horizontal mirando hacia el jugador
             Quaternion rotacionHorizontal =
                 Quaternion.Euler(
                     0,
@@ -108,6 +109,7 @@ public class ControladorAR : MonoBehaviour
         else
         {
             posicionValida = false;
+
             visualPrevia.SetActive(false);
         }
     }
@@ -118,8 +120,6 @@ public class ControladorAR : MonoBehaviour
 
     public void BotonReiniciarEscaneo()
     {
-        Debug.Log("Reiniciando sesión AR...");
-
         if (arSession != null)
             arSession.Reset();
 
@@ -133,54 +133,46 @@ public class ControladorAR : MonoBehaviour
     // =========================================================
 
     public void BotonListo()
-{
-    Debug.Log("BOTON LISTO PRESIONADO");
-
-    Debug.Log($"posicionValida: {posicionValida}");
-
-    if (!posicionValida)
     {
-        Debug.LogWarning("No hay superficie válida");
-        return;
-    }
+        if (!posicionValida)
+        {
+            Debug.LogWarning("No hay superficie válida.");
+            return;
+        }
 
-    if (mapaInstanciado != null)
-    {
-        Debug.LogWarning("Mapa ya instanciado");
-        return;
-    }
+        if (mapaInstanciado != null)
+        {
+            Debug.LogWarning("El mapa ya fue instanciado.");
+            return;
+        }
 
-    Quaternion rotacionHorizontal =
-        Quaternion.Euler(
-            0,
-            Camera.main.transform.eulerAngles.y,
-            0
+        Quaternion rotacionJugador =
+            Quaternion.Euler(
+                0,
+                Camera.main.transform.eulerAngles.y,
+                0
+            );
+            Quaternion rotacionFinal =
+                rotacionJugador * mapaPrefab.transform.rotation;
+
+        mapaInstanciado = Instantiate(
+            mapaPrefab,
+            posicionDetectada.position,
+            rotacionFinal
         );
 
-    Debug.Log("Instanciando mapa...");
+        escalaActual = escalaInicial;
 
-    mapaInstanciado = Instantiate(
-        mapaPrefab,
-        posicionDetectada.position,
-        rotacionHorizontal
-    );
+        mapaInstanciado.transform.localScale =
+            Vector3.one * escalaActual;
 
-    Debug.Log("Mapa instanciado correctamente");
+        enModoEscaneo = false;
 
-    escalaActual = escalaInicial;
+        visualPrevia.SetActive(false);
 
-    mapaInstanciado.transform.localScale =
-        Vector3.one * escalaActual;
-
-    enModoEscaneo = false;
-
-    visualPrevia.SetActive(false);
-
-    panelEscaneo.SetActive(false);
-    panelEscala.SetActive(true);
-
-    Debug.Log("Panel de escala activado");
-}
+        panelEscaneo.SetActive(false);
+        panelEscala.SetActive(true);
+    }
 
     // =========================================================
     // ESCALADO
@@ -222,10 +214,6 @@ public class ControladorAR : MonoBehaviour
     {
         mapaInstanciado.transform.localScale =
             Vector3.one * escalaActual;
-
-        Debug.Log(
-            $"Escala actual: {escalaActual}"
-        );
     }
 
     // =========================================================
@@ -258,22 +246,36 @@ public class ControladorAR : MonoBehaviour
         Transform spawnJugador =
             mapaInstanciado.transform.Find("SpawnJugador");
 
-        if (spawnJugador != null)
-        {
-            Instantiate(
-                tankPlayerPrefab,
-                spawnJugador.position,
-                spawnJugador.rotation,
-                mapaInstanciado.transform
-            );
-
-            Debug.Log("Tanque del jugador instanciado.");
-        }
-        else
+        if (spawnJugador == null)
         {
             Debug.LogWarning(
-                "No se encontró un objeto llamado 'SpawnJugador' dentro del mapa."
+                "No existe SpawnJugador dentro del mapa."
             );
+
+            return;
+        }
+
+        GameObject nuevoTanque = Instantiate(
+            tankPlayerPrefab,
+            spawnJugador.position + Vector3.up * 0.01f,
+            spawnJugador.rotation,
+            mapaInstanciado.transform
+        );
+
+        // =====================================================
+        // ASIGNAR JOYSTICKS
+        // =====================================================
+
+        TankController tankController =
+            nuevoTanque.GetComponent<TankController>();
+
+        if (tankController != null)
+        {
+            tankController.moveJoystick =
+                joystickMovimiento;
+
+            tankController.aimJoystick =
+                joystickApuntado;
         }
 
         Debug.Log("Juego iniciado.");

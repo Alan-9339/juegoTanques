@@ -3,12 +3,12 @@ using UnityEngine;
 public class TankController : MonoBehaviour
 {
     [Header("Referencias")]
-    public Transform chassis;     // Base del tanque
-    public Transform turret;      // Torreta
+    public Transform chassis;
+    public Transform turret;
 
     [Header("Joysticks")]
-    public FixedJoystick moveJoystick; // Izquierdo
-    public FixedJoystick aimJoystick;  // Derecho
+    public FixedJoystick moveJoystick;
+    public FixedJoystick aimJoystick;
 
     [Header("Movimiento")]
     public float moveSpeed = 2f;
@@ -17,22 +17,30 @@ public class TankController : MonoBehaviour
 
     void Update()
     {
-        Move();
-        Aim();
+        if (moveJoystick != null)
+            Move();
+
+        if (aimJoystick != null)
+            Aim();
     }
 
     void Move()
     {
-        // Input del joystick izquierdo
-        Vector3 input = new Vector3(moveJoystick.Horizontal, 0, moveJoystick.Vertical);
+        Vector3 input = new Vector3(
+            moveJoystick.Horizontal,
+            0,
+            moveJoystick.Vertical
+        );
 
         if (input.magnitude > 0.1f)
         {
-            // Movimiento en espacio global (IMPORTANTE para AR)
-            transform.Translate(input * moveSpeed * Time.deltaTime, Space.World);
+            transform.Translate(
+                input * moveSpeed * Time.deltaTime,
+                Space.World
+            );
 
-            // Rotación del chasis hacia la dirección de movimiento
-            Quaternion targetRotation = Quaternion.LookRotation(input);
+            Quaternion targetRotation =
+                Quaternion.LookRotation(input);
 
             chassis.rotation = Quaternion.Slerp(
                 chassis.rotation,
@@ -44,18 +52,30 @@ public class TankController : MonoBehaviour
 
     void Aim()
     {
-        // Input del joystick derecho
-        Vector3 aimInput = new Vector3(aimJoystick.Horizontal, 0, aimJoystick.Vertical);
+        // Horizontal invertido
+        float horizontal =
+            -aimJoystick.Horizontal;
+
+        float vertical =
+            -aimJoystick.Vertical;
+
+        Vector3 aimInput = new Vector3(
+            horizontal,
+            0,
+            vertical
+        );
 
         if (aimInput.magnitude > 0.1f)
         {
-            // Evitar inclinaciones raras
-            aimInput.y = 0;
+            Quaternion targetRotation =
+                Quaternion.LookRotation(aimInput);
 
-            Quaternion targetRotation = Quaternion.LookRotation(aimInput);
-
-            // SOLO rotamos en Y (horizontal)
-            Quaternion flatRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
+            Quaternion flatRotation =
+                Quaternion.Euler(
+                    0,
+                    targetRotation.eulerAngles.y,
+                    0
+                );
 
             turret.rotation = Quaternion.Slerp(
                 turret.rotation,
