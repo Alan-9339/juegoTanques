@@ -23,6 +23,12 @@ public class ControladorAR : MonoBehaviour
     [Header("Player")]
     public GameObject tankPlayerPrefab;
 
+    [Header("Enemigo 1")]
+    public GameObject EnemyTankStatic;
+
+    [Header("Enemigo 2")]
+    public GameObject EnemyTankHunter;
+
     [Header("Joysticks")]
     public FixedJoystick joystickMovimiento;
     public FixedJoystick joystickApuntado;
@@ -278,6 +284,70 @@ public class ControladorAR : MonoBehaviour
                 joystickApuntado;
         }
 
-        Debug.Log("Juego iniciado.");
+        // =====================================================
+        // SPAWN ENEMIGO 1 (ESTÁTICO)
+        // =====================================================
+
+        Transform spawnEnemigo1 =
+            mapaInstanciado.transform.Find("SpawnEnemigo1");
+
+        if (spawnEnemigo1 != null)
+        {
+            GameObject enemigo1 = Instantiate(
+                EnemyTankStatic,
+                spawnEnemigo1.position + Vector3.up * 0.01f,
+                spawnEnemigo1.rotation,
+                mapaInstanciado.transform
+            );
+
+            EnemyTankStatic staticEnemy =
+                enemigo1.GetComponent<EnemyTankStatic>();
+
+            if (staticEnemy != null)
+            {
+                staticEnemy.player =
+                    nuevoTanque.transform;
+            }
+        }
+        else
+        {
+            Debug.LogWarning(
+                "No existe SpawnEnemigo1 dentro del mapa."
+            );
+        }
+
+        // =====================================================
+        // SPAWN ENEMIGO 2 (HUNTER)
+        // =====================================================
+
+        Transform spawnEnemigo2 =
+            mapaInstanciado.transform.Find("SpawnEnemigo2");
+
+        if (spawnEnemigo2 != null)
+        {
+            GameObject enemigo2 = Instantiate(
+                EnemyTankHunter,
+                spawnEnemigo2.position + Vector3.up * 0.01f,
+                spawnEnemigo2.rotation,
+                mapaInstanciado.transform
+            );
+
+            EnemyTankHunter hunter2 =
+                enemigo2.GetComponent<EnemyTankHunter>();
+
+            if (hunter2 != null)
+            {
+                hunter2.player =
+                    nuevoTanque.transform;
+            }
+        }
+        else
+        {
+            Debug.LogWarning(
+                "No existe SpawnEnemigo2 dentro del mapa."
+            );
+        }
+        
+
     }
 }

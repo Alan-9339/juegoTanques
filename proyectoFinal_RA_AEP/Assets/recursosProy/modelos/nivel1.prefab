@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3133534954650313242}
   m_Layer: 0
   m_Name: marcoN
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 6682350962512129389}
   m_Layer: 0
   m_Name: bloqueS (1)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 58062483452468252}
   m_Layer: 0
   m_Name: marcoO
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 7724788974117429712}
   m_Layer: 0
   m_Name: bloqueC
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,6 +382,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4126073309762418761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8833636175309145539}
+  m_Layer: 0
+  m_Name: SpawnEnemigo2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8833636175309145539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126073309762418761}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.271, y: 0, z: -0.284}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4450391523323645549}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4274740350006514054
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +426,7 @@ GameObject:
   - component: {fileID: 9139564464486996368}
   m_Layer: 0
   m_Name: bloqueC (1)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -457,7 +488,7 @@ GameObject:
   - component: {fileID: 5828419014229849404}
   m_Layer: 0
   m_Name: bloqueS (3)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,7 +550,7 @@ GameObject:
   - component: {fileID: 5401785958007346485}
   m_Layer: 0
   m_Name: marcoS
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -568,6 +599,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5589849487468977678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2769921167312945104}
+  m_Layer: 0
+  m_Name: SpawnEnemigo1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2769921167312945104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5589849487468977678}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.271, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4450391523323645549}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7112024236761974998
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +643,7 @@ GameObject:
   - component: {fileID: 6920678799139225180}
   m_Layer: 0
   m_Name: bloqueS
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -643,7 +705,7 @@ GameObject:
   - component: {fileID: 4037075378196832738}
   m_Layer: 0
   m_Name: marcoE
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -705,7 +767,7 @@ GameObject:
   - component: {fileID: 2494771303212162688}
   m_Layer: 0
   m_Name: bloqueS (2)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -806,12 +868,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: nivel1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8118227314256394042}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2769921167312945104}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8833636175309145539}
     - targetCorrespondingSourceObject: {fileID: -5477749408508380018, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3413391544638303010}
@@ -845,10 +917,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4088688947297397964, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6711639717274434541}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5346533523839050206}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
 --- !u!4 &213285536806913354 stripped
 Transform:
@@ -865,43 +934,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2898394801674235841, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
   m_PrefabInstance: {fileID: 4199693512291182982}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3929715230420882647 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
-  m_PrefabInstance: {fileID: 4199693512291182982}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5346533523839050206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3929715230420882647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 73bfe6b9889c0d3488ab102106d41fbd, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!4 &4450391523323645549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 76481529aa5633548b7aeb56deb6c068, type: 3}
