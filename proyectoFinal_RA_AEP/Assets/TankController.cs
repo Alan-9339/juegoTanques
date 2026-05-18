@@ -15,7 +15,14 @@ public class TankController : MonoBehaviour
     public float rotationSpeed = 10f;
     public float turretRotationSpeed = 15f;
 
-    void Update()
+    private Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
     {
         if (moveJoystick != null)
             Move();
@@ -34,9 +41,13 @@ public class TankController : MonoBehaviour
 
         if (input.magnitude > 0.1f)
         {
-            transform.Translate(
-                input * moveSpeed * Time.deltaTime,
-                Space.World
+            Vector3 movimiento =
+                input.normalized *
+                moveSpeed *
+                Time.fixedDeltaTime;
+
+            rb.MovePosition(
+                rb.position + movimiento
             );
 
             Quaternion targetRotation =
@@ -45,14 +56,13 @@ public class TankController : MonoBehaviour
             chassis.rotation = Quaternion.Slerp(
                 chassis.rotation,
                 targetRotation,
-                rotationSpeed * Time.deltaTime
+                rotationSpeed * Time.fixedDeltaTime
             );
         }
     }
 
     void Aim()
     {
-        // Horizontal invertido
         float horizontal =
             -aimJoystick.Horizontal;
 
@@ -80,7 +90,7 @@ public class TankController : MonoBehaviour
             turret.rotation = Quaternion.Slerp(
                 turret.rotation,
                 flatRotation,
-                turretRotationSpeed * Time.deltaTime
+                turretRotationSpeed * Time.fixedDeltaTime
             );
         }
     }

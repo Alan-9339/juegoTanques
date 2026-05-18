@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7473645232607246283}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0425, z: -0.0022}
+  m_LocalPosition: {x: 0, y: 0.0425, z: -0.0017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -112,8 +112,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
       propertyPath: m_Name
-      value: TankPlayer
+      value: TanqueTorreta
       objectReference: {fileID: 0}
+    - target: {fileID: 1361649996490795649, guid: 80abff6af046190419a143095c71149d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 000731487ec1bf84f9240b8850c1d7d5, type: 2}
+    - target: {fileID: 3108977719401242785, guid: 80abff6af046190419a143095c71149d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e3cd29addd52664e9b6be15eca3026d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -123,21 +131,8 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1346347330197394917}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3743057103085596964}
   m_SourcePrefab: {fileID: 100100000, guid: 80abff6af046190419a143095c71149d, type: 3}
---- !u!4 &737301530754225273 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6900318218425580100, guid: 80abff6af046190419a143095c71149d, type: 3}
-  m_PrefabInstance: {fileID: 6195177418104024637}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2200103240324333690 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5436380436847357511, guid: 80abff6af046190419a143095c71149d, type: 3}
-  m_PrefabInstance: {fileID: 6195177418104024637}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5941101630696049110 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 80abff6af046190419a143095c71149d, type: 3}
@@ -148,25 +143,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
   m_PrefabInstance: {fileID: 6195177418104024637}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1346347330197394917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6429126891010102124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da0032bf5f3797341937175409269ebf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TankController
-  chassis: {fileID: 737301530754225273}
-  turret: {fileID: 2200103240324333690}
-  moveJoystick: {fileID: 0}
-  aimJoystick: {fileID: 0}
-  moveSpeed: 0.5
-  rotationSpeed: 10
-  turretRotationSpeed: 15
 --- !u!54 &3743057103085596964
 Rigidbody:
   m_ObjectHideFlags: 0
