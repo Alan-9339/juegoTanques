@@ -658,7 +658,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControladorAR
   visualPrevia: {fileID: 8872012392925767802, guid: e1cb8b7266d02d54e889fdcc54d51a43, type: 3}
-  mapaPrefab: {fileID: 3929715230420882647, guid: dc0600073422d1b47b17e2a574f5f277, type: 3}
+  mapasNiveles:
+  - {fileID: 3929715230420882647, guid: dc0600073422d1b47b17e2a574f5f277, type: 3}
+  - {fileID: 2362308108576660243, guid: f5c3266868fffac4baa02ec96722dbfc, type: 3}
+  - {fileID: 8634886028233820205, guid: c27b6c0724b8fa648adf8ee3513ad37c, type: 3}
+  - {fileID: 6732431858131582075, guid: 9ecc6cf051a3246468d064a16cd5bd43, type: 3}
   panelEscaneo: {fileID: 1886250236}
   panelEscala: {fileID: 53409587}
   panelJuego: {fileID: 2022081872}
@@ -667,7 +671,7 @@ MonoBehaviour:
   escalaMaxima: 3
   velocidadEscala: 0.25
   tankPlayerPrefab: {fileID: 6429126891010102124, guid: cbe99e026cb686040aa5ff6e0fc027e6, type: 3}
-  EnemyTankStatic: {fileID: 6429126891010102124, guid: 795c7c96baa19df4db57dd32733dd960, type: 3}
+  EnemyTankStatic: {fileID: 6429126891010102124, guid: b576d1f3a657225498b3899a9c3b592a, type: 3}
   EnemyTankHunter: {fileID: 6429126891010102124, guid: 48c2d10883b65b74691c2ad63c9fc910, type: 3}
   joystickMovimiento: {fileID: 2929252284355019518}
   joystickApuntado: {fileID: 4241840802004127186}

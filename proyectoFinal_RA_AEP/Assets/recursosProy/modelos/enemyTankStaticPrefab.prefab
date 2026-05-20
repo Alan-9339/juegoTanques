@@ -145,6 +145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemyTankStaticPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1361649996490795649, guid: 80abff6af046190419a143095c71149d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

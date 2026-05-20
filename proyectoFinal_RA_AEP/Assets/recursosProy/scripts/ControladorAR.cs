@@ -7,7 +7,11 @@ public class ControladorAR : MonoBehaviour
 {
     [Header("Configuración AR")]
     public GameObject visualPrevia;
-    public GameObject mapaPrefab;
+    
+    // Arreglo para guardar todos tus niveles
+    public GameObject[] mapasNiveles; 
+    private int nivelActual = 0;      // Controla en qué nivel vas
+    private int enemigosRestantes = 0; // Contador de tanques vivos
 
     [Header("UI")]
     public GameObject panelEscaneo;
@@ -152,17 +156,26 @@ public class ControladorAR : MonoBehaviour
             return;
         }
 
+        // Evitar errores si no hay niveles configurados
+        if (mapasNiveles.Length == 0 || mapasNiveles[nivelActual] == null)
+        {
+            Debug.LogError("No has asignado el Prefab del nivel en el arreglo 'Mapas Niveles'.");
+            return;
+        }
+
         Quaternion rotacionJugador =
             Quaternion.Euler(
                 0,
                 Camera.main.transform.eulerAngles.y,
                 0
             );
-            Quaternion rotacionFinal =
-                rotacionJugador * mapaPrefab.transform.rotation;
+            
+        // Usar el mapa del nivel actual en lugar de mapaPrefab
+        Quaternion rotacionFinal =
+            rotacionJugador * mapasNiveles[nivelActual].transform.rotation;
 
         mapaInstanciado = Instantiate(
-            mapaPrefab,
+            mapasNiveles[nivelActual],
             posicionDetectada.position,
             rotacionFinal
         );
@@ -300,6 +313,8 @@ public class ControladorAR : MonoBehaviour
                 mapaInstanciado.transform
             );
 
+            RegistrarEnemigo();
+
             EnemyTankStatic staticEnemy =
                 enemigo1.GetComponent<EnemyTankStatic>();
 
@@ -331,6 +346,7 @@ public class ControladorAR : MonoBehaviour
                 spawnEnemigo2.rotation,
                 mapaInstanciado.transform
             );
+            RegistrarEnemigo();
 
             EnemyTankHunter hunter2 =
                 enemigo2.GetComponent<EnemyTankHunter>();
@@ -347,7 +363,135 @@ public class ControladorAR : MonoBehaviour
                 "No existe SpawnEnemigo2 dentro del mapa."
             );
         }
-        
+    }
 
+    // =========================================================
+    // LÓGICA DE PROGRESIÓN DE NIVELES
+    // =========================================================
+
+    public void RegistrarEnemigo()
+    {
+        enemigosRestantes++;
+    }
+
+    public void EnemigoEliminado()
+    {
+        enemigosRestantes--;
+
+        // Si ya no quedan enemigos, pasamos de nivel
+        if (enemigosRestantes <= 0)
+        {
+            ComenzarSiguienteNivel();
+        }
+    }
+
+    void ComenzarSiguienteNivel()
+    {
+        nivelActual++;
+
+        // Verificar victoria
+        if (nivelActual >= mapasNiveles.Length)
+        {
+            Debug.Log("¡Juego Completado!");
+            return;
+        }
+
+        // Guardar posición y rotación del mapa actual
+        Vector3 posicion = mapaInstanciado.transform.position;
+        Quaternion rotacion = mapaInstanciado.transform.rotation;
+
+        // Destruir mapa viejo
+        Destroy(mapaInstanciado);
+
+        enemigosRestantes = 0;
+
+        // Crear siguiente nivel
+        mapaInstanciado = Instantiate(
+            mapasNiveles[nivelActual],
+            posicion,
+            rotacion
+        );
+
+        mapaInstanciado.transform.localScale =
+            Vector3.one * escalaActual;
+
+        // ==========================================
+        // SPAWN PLAYER
+        // ==========================================
+
+        Transform spawnJugador =
+            mapaInstanciado.transform.Find("SpawnJugador");
+
+        GameObject nuevoTanque = Instantiate(
+            tankPlayerPrefab,
+            spawnJugador.position + Vector3.up * 0.01f,
+            spawnJugador.rotation,
+            mapaInstanciado.transform
+        );
+
+        TankController tankController =
+            nuevoTanque.GetComponent<TankController>();
+
+        if (tankController != null)
+        {
+            tankController.moveJoystick = joystickMovimiento;
+            tankController.aimJoystick = joystickApuntado;
+        }
+
+        // ==========================================
+        // ENEMIGO 1
+        // ==========================================
+
+        Transform spawnEnemigo1 =
+            mapaInstanciado.transform.Find("SpawnEnemigo1");
+
+        if (spawnEnemigo1 != null)
+        {
+            GameObject enemigo1 = Instantiate(
+                EnemyTankStatic,
+                spawnEnemigo1.position + Vector3.up * 0.01f,
+                spawnEnemigo1.rotation,
+                mapaInstanciado.transform
+            );
+
+            RegistrarEnemigo();
+
+            EnemyTankStatic staticEnemy =
+                enemigo1.GetComponent<EnemyTankStatic>();
+
+            if (staticEnemy != null)
+            {
+                staticEnemy.player = nuevoTanque.transform;
+            }
+        }
+
+        // ==========================================
+        // ENEMIGO 2
+        // ==========================================
+
+        Transform spawnEnemigo2 =
+            mapaInstanciado.transform.Find("SpawnEnemigo2");
+
+        if (spawnEnemigo2 != null)
+        {
+            GameObject enemigo2 = Instantiate(
+                EnemyTankHunter,
+                spawnEnemigo2.position + Vector3.up * 0.01f,
+                spawnEnemigo2.rotation,
+                mapaInstanciado.transform
+            );
+
+            RegistrarEnemigo();
+
+            EnemyTankHunter hunter =
+                enemigo2.GetComponent<EnemyTankHunter>();
+
+            if (hunter != null)
+            {
+                hunter.player = nuevoTanque.transform;
+            }
+        }
+
+        Debug.Log("Nivel siguiente cargado.");
     }
 }
