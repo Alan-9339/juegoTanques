@@ -51,7 +51,7 @@ public class EnemyTankStatic : MonoBehaviour
     {
         Quaternion targetRotation =
             Quaternion.LookRotation(direccion);
-
+        targetRotation *= Quaternion.Euler(0, 180, 0);
         turret.rotation = Quaternion.Slerp(
             turret.rotation,
             targetRotation,

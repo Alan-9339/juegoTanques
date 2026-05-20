@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207448819577404371}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -0.00448, z: -0.0491}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2200103240324333690}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &7473645232607246283
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,11 +155,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7e3cd29addd52664e9b6be15eca3026d, type: 2}
     - target: {fileID: 5436380436847357511, guid: 80abff6af046190419a143095c71149d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5436380436847357511, guid: 80abff6af046190419a143095c71149d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5436380436847357511, guid: 80abff6af046190419a143095c71149d, type: 3}
       propertyPath: m_LocalRotation.z
@@ -167,7 +167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5436380436847357511, guid: 80abff6af046190419a143095c71149d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -184,7 +184,10 @@ PrefabInstance:
       addedObject: {fileID: 3743057103085596964}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3664852219338342905}
+      addedObject: {fileID: 3736564608584664850}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7532059461569992417}
   m_SourcePrefab: {fileID: 100100000, guid: 80abff6af046190419a143095c71149d, type: 3}
 --- !u!4 &2200103240324333690 stripped
 Transform:
@@ -228,7 +231,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1
---- !u!114 &3664852219338342905
+--- !u!114 &3736564608584664850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,3 +250,16 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &7532059461569992417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429126891010102124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa17f8278719cc342a5b30f5d9bc09ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 1

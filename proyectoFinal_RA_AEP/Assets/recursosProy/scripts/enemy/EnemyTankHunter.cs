@@ -9,9 +9,9 @@ public class EnemyTankHunter : MonoBehaviour
     public Transform visionPoint;
 
     [Header("Movimiento Base (Escala 1:1)")]
-    public float moveSpeed = 2f;
+    public float moveSpeed;
     public float rotationSpeed = 5f;
-    public float stopDistance = 6f; // Distancia deseada en escala normal (1)
+    public float stopDistance; // Distancia deseada en escala normal (1)
 
     [Header("Combate Base (Escala 1:1)")]
     public float rangoVision = 20f;

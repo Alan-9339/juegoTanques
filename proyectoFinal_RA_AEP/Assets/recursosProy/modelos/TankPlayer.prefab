@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5870101959085768061}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.00365, z: -0.04899}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: -0.00365, z: -0.0522}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2200103240324333690}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &7473645232607246283
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +149,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5436380436847357511, guid: 80abff6af046190419a143095c71149d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436380436847357511, guid: 80abff6af046190419a143095c71149d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436380436847357511, guid: 80abff6af046190419a143095c71149d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436380436847357511, guid: 80abff6af046190419a143095c71149d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -165,6 +181,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3743057103085596964}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8486358681444082399}
   m_SourcePrefab: {fileID: 100100000, guid: 80abff6af046190419a143095c71149d, type: 3}
 --- !u!4 &737301530754225273 stripped
 Transform:
@@ -200,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankController
   chassis: {fileID: 737301530754225273}
   turret: {fileID: 2200103240324333690}
+  sistemaDisparo: {fileID: 8486358681444082399}
   moveJoystick: {fileID: 0}
   aimJoystick: {fileID: 0}
   moveSpeed: 0.5
@@ -232,3 +252,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!114 &8486358681444082399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429126891010102124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18cfac6ec11aaae4183546f6d64ae506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Proyectil1
+  spawnPoint: {fileID: 8489563583654987671}
+  bullet: {fileID: 1419787246565528741, guid: 01ee5d0f8ebde804190e45412d8fc195, type: 3}
+  shotForce: 10
+  tiempoDeVida: 3

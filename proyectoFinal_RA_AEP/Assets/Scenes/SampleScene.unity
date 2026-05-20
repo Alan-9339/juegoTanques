@@ -667,7 +667,7 @@ MonoBehaviour:
   escalaMaxima: 3
   velocidadEscala: 0.25
   tankPlayerPrefab: {fileID: 6429126891010102124, guid: cbe99e026cb686040aa5ff6e0fc027e6, type: 3}
-  EnemyTankStatic: {fileID: 6429126891010102124, guid: b576d1f3a657225498b3899a9c3b592a, type: 3}
+  EnemyTankStatic: {fileID: 6429126891010102124, guid: 795c7c96baa19df4db57dd32733dd960, type: 3}
   EnemyTankHunter: {fileID: 6429126891010102124, guid: 48c2d10883b65b74691c2ad63c9fc910, type: 3}
   joystickMovimiento: {fileID: 2929252284355019518}
   joystickApuntado: {fileID: 4241840802004127186}

@@ -6,20 +6,46 @@ public class TankController : MonoBehaviour
     public Transform chassis;
     public Transform turret;
 
+    // Referencia al sistema de disparo
+    public Proyectil1 sistemaDisparo;
+
     [Header("Joysticks")]
     public FixedJoystick moveJoystick;
     public FixedJoystick aimJoystick;
 
-    [Header("Movimiento")]
+    [Header("Configuración")]
     public float moveSpeed = 2f;
     public float rotationSpeed = 10f;
     public float turretRotationSpeed = 15f;
 
     private Rigidbody rb;
+    private bool estabaApuntando = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        // Detectar cuando el jugador suelta el joystick de apuntado
+        if (aimJoystick != null)
+        {
+            float magnitude = new Vector2(
+                aimJoystick.Horizontal,
+                aimJoystick.Vertical
+            ).magnitude;
+
+            if (magnitude > 0.1f)
+            {
+                estabaApuntando = true;
+            }
+            else if (estabaApuntando && magnitude <= 0.1f)
+            {
+                estabaApuntando = false;
+                Disparar();
+            }
+        }
     }
 
     void FixedUpdate()
@@ -41,21 +67,16 @@ public class TankController : MonoBehaviour
 
         if (input.magnitude > 0.1f)
         {
-            Vector3 movimiento =
+            rb.MovePosition(
+                rb.position +
                 input.normalized *
                 moveSpeed *
-                Time.fixedDeltaTime;
-
-            rb.MovePosition(
-                rb.position + movimiento
+                Time.fixedDeltaTime
             );
-
-            Quaternion targetRotation =
-                Quaternion.LookRotation(input);
 
             chassis.rotation = Quaternion.Slerp(
                 chassis.rotation,
-                targetRotation,
+                Quaternion.LookRotation(input),
                 rotationSpeed * Time.fixedDeltaTime
             );
         }
@@ -63,35 +84,27 @@ public class TankController : MonoBehaviour
 
     void Aim()
     {
-        float horizontal =
-            -aimJoystick.Horizontal;
+        // Quitamos los negativos para evitar apuntado invertido
+        Vector3 aimInput = new Vector3(-aimJoystick.Horizontal,0,-aimJoystick.Vertical);
 
-        float vertical =
-            -aimJoystick.Vertical;
-
-        Vector3 aimInput = new Vector3(
-            horizontal,
-            0,
-            vertical
-        );
-
-        if (aimInput.magnitude > 0.1f)
+        if (aimInput.sqrMagnitude > 0.01f)
         {
             Quaternion targetRotation =
                 Quaternion.LookRotation(aimInput);
 
-            Quaternion flatRotation =
-                Quaternion.Euler(
-                    0,
-                    targetRotation.eulerAngles.y,
-                    0
-                );
-
             turret.rotation = Quaternion.Slerp(
                 turret.rotation,
-                flatRotation,
+                targetRotation,
                 turretRotationSpeed * Time.fixedDeltaTime
             );
+        }
+    }
+
+    void Disparar()
+    {
+        if (sistemaDisparo != null)
+        {
+            sistemaDisparo.Disparar();
         }
     }
 }

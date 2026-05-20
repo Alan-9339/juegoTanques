@@ -145,6 +145,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemyTankHunterPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361649996490795649, guid: 80abff6af046190419a143095c71149d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1361649996490795649, guid: 80abff6af046190419a143095c71149d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -185,12 +193,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1082644589203581912}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80abff6af046190419a143095c71149d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4625352853279208725}
   m_SourcePrefab: {fileID: 100100000, guid: 80abff6af046190419a143095c71149d, type: 3}
---- !u!4 &737301530754225273 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6900318218425580100, guid: 80abff6af046190419a143095c71149d, type: 3}
-  m_PrefabInstance: {fileID: 6195177418104024637}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2200103240324333690 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5436380436847357511, guid: 80abff6af046190419a143095c71149d, type: 3}
@@ -246,13 +252,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTankHunter
   player: {fileID: 5941101630696049110, guid: cbe99e026cb686040aa5ff6e0fc027e6, type: 3}
-  chassis: {fileID: 737301530754225273}
+  chassis: {fileID: 2200103240324333690}
   turret: {fileID: 2200103240324333690}
   visionPoint: {fileID: 9102558566457441941}
-  moveSpeed: 0.1
+  moveSpeed: 0.2
   rotationSpeed: 5
-  stopDistance: 1
-  rangoVision: 2
+  stopDistance: 0.3
+  rangoVision: 1
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &4625352853279208725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429126891010102124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa17f8278719cc342a5b30f5d9bc09ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 1
